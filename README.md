@@ -19,3 +19,4 @@
 # Review questions
 1. smallest even multiple
 2. BST traversals
+3. GCD logic
