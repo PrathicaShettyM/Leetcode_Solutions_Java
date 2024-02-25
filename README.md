@@ -6,6 +6,9 @@
     1. Max product
     2. Sum of squares
     3. Transpose of a matrix
+    4. Count Square sum
+    5. Matrix transpose
+    6. Sort an array of 0s 1s 2s
 
 - Strings
     1. Reverse string
