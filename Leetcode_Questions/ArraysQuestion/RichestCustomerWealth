@@ -1,0 +1,27 @@
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int row = accounts.length;
+        int max; 
+        int[] arr = new int[row];
+        // finding the wealth of the customer
+        for(int i = 0; i < row; i++){
+            max = 0; // intialise max every time to zero
+            for(int j = 0; j < accounts[i].length; j++){
+                max += accounts[i][j];
+                arr[i] = max;
+            }
+        }
+        // sorting the wealth of customer to find the max wealth
+    int temp;
+    for(int i = 0; i < row-1; i++){
+        for(int j = i+1; j < row; j++){
+            if(arr[i] < arr[j]){
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr[0];
+    }
+}
