@@ -10,7 +10,12 @@
     5. Matrix transpose
     6. Sort an array of 0s 1s 2s
     7. Running sum of 1d Array
-    
+    8. Build array from permutation
+    9. Sort 0s, 1s, 2s
+    10. Valid triangle
+    11. Richest customer wealth
+    12. Plus one
+
 - Strings
     1. Reverse string
 
