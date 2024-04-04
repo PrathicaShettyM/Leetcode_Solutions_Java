@@ -1,18 +1,18 @@
 public class test {
     public static void main(String[] args) {
-        int[] batteryPercentages = {1,1,2,1,3};
+        int[] nums = {1,2};
+        int mx = Integer.MIN_VALUE, mn = Integer.MAX_VALUE;
+        for(int i  = 0; i < nums.length; i++){
+            mx = Math.max(mx, nums[i]);
+            mn = Math.max(mn, nums[i]);
+        }
         int count = 0;
-        for(int i = 0; i < batteryPercentages.length; i++){
-            if(batteryPercentages[i] == 0) continue;
-                else if(batteryPercentages[i] > 0){
-                // batteryPercentages[j] = Math.max(0, batteryPercentages[j]-1);
-                for(int j = i+1; j < batteryPercentages.length; j++){
-                    batteryPercentages[j] -= 1;
-                    System.out.print(batteryPercentages[j] + " ");
-                    count++;
-                } 
-            }
-        } 
-        System.out.println(count); 
+        System.out.println(mn);
+        System.out.println(mx);
+        // for(int i = 0; i < nums.length; i++){
+        //     if(nums[i]!= mn && nums[i]!= mx) 
+        //         count+=1;
+        // }
+        
     }
 }
