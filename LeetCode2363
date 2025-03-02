@@ -1,0 +1,46 @@
+# LeetCode 2363: Merge Similar Items
+# Method 1: Using HashMap and TreeMap
+# Time Complexity: O(nlogn)
+# Space Complexity: O(n)
+
+class Solution {
+    public List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
+        HashMap<Integer,Integer> map = new HashMap<>(); // key,value
+
+        // put elements of items 1 to map
+        for(int i = 0; i < items1.length; i++){
+            int key = items1[i][0];
+            int value = items1[i][1];
+            map.put(key, value);
+        }
+
+        // put elements of items 1 to map
+        for(int i = 0; i < items2.length; i++){
+            int key = items2[i][0];
+            int value = items2[i][1];
+            // if they are having same key add their freq to values
+            if(map.containsKey(key)){
+                int freq = map.get(key);
+                map.put(key, freq+value);
+            }
+            else map.put(key, value);
+        }
+
+        // sort the map using a tree map
+        Map<Integer,Integer> tmap = new TreeMap<>(map);
+        List<List<Integer>> result = new ArrayList<>();
+
+        for(Map.Entry<Integer,Integer> entry : tmap.entrySet()){
+            List<Integer> list = new ArrayList<>();
+            int key = entry.getKey();
+            int value = entry.getValue();
+
+            list.add(key);
+            list.add(value);
+
+            result.add(list);
+        }
+
+        return result;
+    }
+}

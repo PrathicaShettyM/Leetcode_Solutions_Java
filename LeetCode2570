@@ -1,0 +1,43 @@
+# Leetcode 2570: Merge 2D Arrays by Summing Values
+# Method 1: Using HashMap and TreeMap
+# Time Complexity: O(nlogn)
+# Space Complexity: O(n)
+
+class Solution {
+    public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
+        HashMap<Integer,Integer> map = new HashMap<>(); // key,value
+
+        // put elements of num1 to map
+        for(int i = 0; i < nums1.length; i++){
+            int key = nums1[i][0];
+            int value = nums1[i][1];
+            map.put(key, value);
+        }
+
+        // put elements of nums2 to map
+        for(int i = 0; i < nums2.length; i++){
+            int key = nums2[i][0];
+            int value = nums2[i][1];
+            // if common keys just add their values
+            if(map.containsKey(key)){
+                int freq = map.get(key);
+                map.put(key, freq + value);
+            }
+            else map.put(key, value);
+        }
+
+        // sort the map
+        // use treemap because it naturally sorts elements based on their keys
+        Map<Integer,Integer> tmap = new TreeMap<>(map);
+
+        int[][] result = new int[map.size()][2];
+        int i = 0;
+        for(Map.Entry<Integer,Integer> entry : tmap.entrySet()){
+            result[i][0] = entry.getKey();
+            result[i][1] = entry.getValue();
+            i++;
+        }
+
+        return result;
+    }
+}

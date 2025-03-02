@@ -1,0 +1,31 @@
+# LeetCode 2460: Apply Operations
+# Method 1: Using Two Pointers
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+
+class Solution {
+    public int[] applyOperations(int[] nums) {
+        int n = nums.length;
+        for(int i = 0; i < n-1; i++){
+            if(nums[i] == nums[i+1]){
+                nums[i] *= 2;
+                nums[i+1] = 0;
+            }
+        }
+        
+        // copy elements in place
+        int idx = 0;
+        for(int i = 0; i < n; i++){
+            if(nums[i] != 0){
+                nums[idx++] = nums[i];
+            }
+        }
+
+        // remaining places will have 0
+        while(idx < n){
+            nums[idx++] = 0;
+        }
+
+        return nums;
+    }
+}
