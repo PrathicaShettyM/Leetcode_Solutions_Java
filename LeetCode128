@@ -1,0 +1,47 @@
+# LeetCode 128: Longest Consecutive Sequence
+# Method 1: Using TreeMap, HashSet, ArrayList, 2 Pointers
+# TC = O(n)
+# SC = O(3n) = O(n)
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        if(nums.length == 0) return 0;
+        HashSet<Integer> set = new HashSet<>();
+        // add the array elements to set to remove the duplicates
+        for(int ele : nums){
+            set.add(ele);
+        }
+
+        // treemap will automatically sort elements in ascending order
+        Map<Integer,Integer> map = new TreeMap<>(); // element, freq
+        for(int ele : set){
+            map.put(ele, 1);
+        }
+
+        // add it to array list to make it easy
+        List<Integer> list = new ArrayList<>();
+        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+            list.add(entry.getKey());
+        }
+
+        int i = 0, j = 1;
+        int mx = Integer.MIN_VALUE;
+        while(j < list.size()){
+            if(list.get(j)-list.get(j-1) == 1){
+                j++;
+            }
+            else{
+                int len = j-i;
+                mx = Math.max(mx, len);
+                i = j;
+                j = i+1;
+            }
+        }
+
+        // when it goes beyond the array range
+        int len = j-i;
+        mx = Math.max(mx, len);
+
+        return mx;
+    }
+}
