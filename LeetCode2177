@@ -1,0 +1,14 @@
+# Leetcode 2177: Find 3 consecutive integers that sum to a given number
+# TC = O(1)
+# SC = O(1)
+# brute force : maths
+
+class Solution {
+    public long[] sumOfThree(long num) {
+        if(num == 0) return new long[]{-1,0,1}; // edge case 377
+        if(num == 3) return new long[]{0,1,2}; // edge case 378
+        if(num < 6 || num%3!=0) return new long[]{};
+        long n = num/3;
+        return new long[]{n-1,n,n+1};
+    }
+}

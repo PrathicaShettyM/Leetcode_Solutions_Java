@@ -1,0 +1,19 @@
+# Leetcode 2579: Count total number of colored cells
+# tc = o(n)
+# sc = o(1)
+
+class Solution {
+    public long coloredCells(int n) {
+        if(n == 1) return 1;
+
+        long odd = 2*n-1;
+        long sum = odd;
+
+        while(odd != 1){
+            odd -= 2;
+            sum += 2*odd;
+        }
+
+        return sum;
+    }
+}
