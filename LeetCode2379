@@ -1,0 +1,32 @@
+# LeetCode 2379: Minimum recolors to get k consecutive black blocks
+# M1: Fixed-size Sliding Windows
+# TC = O(n*k)
+# SC = O(1)
+
+class Solution {
+    public int minimumRecolors(String blocks, int k) {
+        // m1: fixed size sliding windows
+        int minCount = Integer.MAX_VALUE;
+        int n = blocks.length();
+        
+        int i = 0, j = 0;
+        while(j < k) j++;
+        j--; // take 1 step back
+
+        // sliding windows code
+        while(j < n){
+            int count = 0;
+            for(int itr = i; itr <= j; itr++){
+                if(blocks.charAt(itr) == 'W') count++;
+            }
+
+            if(minCount > count){
+                minCount = count;
+            }
+            i++;
+            j++;
+        }
+
+        return minCount;
+    }
+}
